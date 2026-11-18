@@ -2,7 +2,7 @@
 
 This is a CPU-only Python CLI for evidence-backed comparison of anchored policy requirements, a structured specification, a versioned decision graph, and a linked Python route function. The deterministic reviewer decides `PASS`, `CHANGES_REQUIRED`, or `INCOMPLETE`; an optional model-client interface is advisory only.
 
-## Recruiter report: answer and result
+## Report
 
 **What it answers:** Does a workflow implementation match the approved policy requirements across its specification, decision graph, and linked Python route?
 
