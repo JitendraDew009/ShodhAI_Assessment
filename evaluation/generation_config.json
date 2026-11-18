@@ -1,0 +1,9 @@
+{
+  "seed": 2026,
+  "generator": "evaluation/generate_cases.py",
+  "randomness": "none; cases use deterministic transformations",
+  "development_cases": 17,
+  "held_out_cases": 4,
+  "labels_file": "evaluation/labels.json",
+  "labels_are_reviewer_input": false
+}

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools==75.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workflow-reviewer"
+version = "1.0.0"
+description = "Deterministic evidence-backed review of structured ticket workflows"
+requires-python = ">=3.11,<3.14"
+dependencies = []
+
+[project.scripts]
+workflow-reviewer = "workflow_reviewer.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.unittest]
+start-directory = "tests"

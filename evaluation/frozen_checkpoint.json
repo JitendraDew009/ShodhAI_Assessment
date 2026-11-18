@@ -1,0 +1,30 @@
+{
+  "case_count": 21,
+  "checkpoint": "initial working requirements-versus-specification mode; graph/code left unreviewed",
+  "development_case_count": 17,
+  "expected_labels_not_in_reviewer_inputs": true,
+  "frozen_before_final_evaluation": true,
+  "frozen_file_sha256": {
+    "evaluation/freeze_checkpoint.py": "692fe0906753ed7b2e7a8a8e045c79cf2309182cff1c383c163e9cd68177ee66",
+    "evaluation/generate_cases.py": "96d01e1fa60b8560526bff687ef86fffe4441b902e4ed8cb05ab37fc427937d1",
+    "evaluation/generation_config.json": "4abd353bdaae59d4e4060137b8b3200ed385f0fbdca629b2e1eacfeea7c5648d",
+    "evaluation/labels.json": "b5bb13a4b3474d782e1ac778d6796dff3f653bd3275a0ee77d4c07bb95f39037",
+    "evaluation/run_evaluation.py": "61a87c6e180c9adc7c9d6ab60936b099789095698e808c3da9e8158e72ea4ee9",
+    "pyproject.toml": "354a6c0b605452ab340b7c2aaf07b61e543b9fdba3d41b38ee812bd257d27b7f",
+    "schemas/bundle.schema.json": "9fd5606d385524983b63dcc51438581d73ff589ff7b872465bda6c485c5e6ca2",
+    "schemas/condition.schema.json": "690c6d1bc43f0b8af11ebea72527331e04ed28bfe98987589bc118d49e54d6c4",
+    "src/workflow_reviewer/__init__.py": "438994545189247fbb9f918ce9c23d82cc325544acdd5e18215d92cc4054865e",
+    "src/workflow_reviewer/cli.py": "b4add77659ce61c801fd8fbd29f7f5d9fef79ae1a671867c589561a172e5b86c",
+    "src/workflow_reviewer/dsl.py": "96b169c51e11aab19d9bd8c64853270ca9ffa78e8f9affe3245b4d845188af79",
+    "src/workflow_reviewer/model.py": "d4c52c9b7d70c1b982508e34c8a4542088fd26308652f9645880e85ff4ee860d",
+    "src/workflow_reviewer/reviewer.py": "05cda48bb64020357787a3ad89e063afc36acd0743c7bbdb90086df48d0c8cbc",
+    "tests/test_reviewer.py": "20869b158ec893402e60ba3df6d8692a965ad1a9ba6dcb20bc04e82c8b4f943e"
+  },
+  "generated_bundle_set_sha256": "e9b1077be896d66d87c13a53a5cab0e7e2947a2eb234e7d3c5d6744131871ddb",
+  "held_out_case_ids": [
+    "heldout_defect_exclusive_boundary",
+    "heldout_valid_membership_formulation",
+    "heldout_valid_not_formulation",
+    "heldout_valid_seconds_equivalence"
+  ]
+}

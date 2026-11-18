@@ -1,0 +1,23 @@
+{
+  "valid_baseline": {"expected": "PASS", "split": "development", "model": "none"},
+  "valid_unusual_boolean_grouping": {"expected": "PASS", "split": "development", "model": "none"},
+  "valid_renamed_and_reordered": {"expected": "PASS", "split": "development", "model": "none"},
+  "valid_approved_threshold_change": {"expected": "PASS", "split": "development", "model": "none"},
+  "valid_unapproved_suggestion_ignored": {"expected": "PASS", "split": "development", "model": "none"},
+  "valid_instruction_in_comment": {"expected": "PASS", "split": "development", "model": "none"},
+  "defect_missing_urgent_requirement": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_threshold_drift": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_precedence_overlap": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_wrong_workflow_branch": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_missing_workflow_branch": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_code_boundary_disagreement": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_interacting_plausible_rules": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "defect_conflicting_approvals": {"expected": "CHANGES_REQUIRED", "split": "development", "model": "none"},
+  "incomplete_ambiguous_source": {"expected": "INCOMPLETE", "split": "development", "model": "none"},
+  "incomplete_unsupported_python": {"expected": "INCOMPLETE", "split": "development", "model": "none"},
+  "incomplete_fake_model_failure": {"expected": "INCOMPLETE", "split": "development", "model": "timeout"},
+  "heldout_valid_seconds_equivalence": {"expected": "PASS", "split": "held_out", "model": "none"},
+  "heldout_valid_not_formulation": {"expected": "PASS", "split": "held_out", "model": "none"},
+  "heldout_valid_membership_formulation": {"expected": "PASS", "split": "held_out", "model": "none"},
+  "heldout_defect_exclusive_boundary": {"expected": "CHANGES_REQUIRED", "split": "held_out", "model": "none"}
+}

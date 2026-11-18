@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "condition.schema.json",
+  "title": "Workflow condition",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["all"],
+      "properties": {"all": {"type": "array", "minItems": 1, "items": {"$ref": "#"}}},
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["any"],
+      "properties": {"any": {"type": "array", "minItems": 1, "items": {"$ref": "#"}}},
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["not"],
+      "properties": {"not": {"$ref": "#"}},
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["field", "op"],
+      "properties": {
+        "field": {"type": "string", "minLength": 1},
+        "op": {"enum": ["eq", "ne", "gt", "gte", "lt", "lte", "in", "missing", "present"]},
+        "value": {}
+      },
+      "additionalProperties": false
+    }
+  ]
+}

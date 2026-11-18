@@ -1,0 +1,222 @@
+{
+  "approval_records": [],
+  "field_units": {
+    "waiting": "minutes"
+  },
+  "review_revision": "1.0",
+  "snippet": {
+    "name": "router.py",
+    "source": "def route(ticket):\n    if ticket.get('category') is None:\n        return 'manual_review'\n    if ticket.get('urgent') == True:\n        return 'priority'\n    if ticket.get('waiting') is not None and ticket.get('waiting') >= 30:\n        return 'escalation'\n    return 'normal'\n",
+    "version": "1.0"
+  },
+  "source": {
+    "name": "support-policy",
+    "requirements": [
+      {
+        "anchor": "policy.md#R1",
+        "id": "R1",
+        "precedence": 0,
+        "route": "manual_review",
+        "source_text": "Missing category -> manual review.",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "anchor": "policy.md#R2",
+        "id": "R2",
+        "precedence": 1,
+        "route": "priority",
+        "source_text": "Otherwise, urgent ticket -> priority queue.",
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        }
+      },
+      {
+        "anchor": "policy.md#R3",
+        "id": "R3",
+        "precedence": 2,
+        "route": "escalation",
+        "source_text": "Otherwise, waiting >= 30 minutes -> escalation.",
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 30
+        }
+      },
+      {
+        "anchor": "policy.md#R4",
+        "id": "R4",
+        "precedence": 3,
+        "route": "normal",
+        "source_text": "All remaining tickets -> normal queue.",
+        "when": {
+          "all": [
+            {
+              "field": "category",
+              "op": "present"
+            },
+            {
+              "field": "urgent",
+              "op": "ne",
+              "value": true
+            },
+            {
+              "any": [
+                {
+                  "field": "waiting",
+                  "op": "missing"
+                },
+                {
+                  "field": "waiting",
+                  "op": "lt",
+                  "value": 30
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "version": "1.0"
+  },
+  "specification": {
+    "name": "routing-spec",
+    "rules": [
+      {
+        "anchor": "policy.md#R1",
+        "id": "R1",
+        "precedence": 0,
+        "route": "manual_review",
+        "source_text": "Missing category -> manual review.",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "anchor": "policy.md#R2",
+        "id": "R2",
+        "precedence": 1,
+        "route": "priority",
+        "source_text": "Otherwise, urgent ticket -> priority queue.",
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        }
+      },
+      {
+        "anchor": "policy.md#R3",
+        "id": "R3",
+        "precedence": 2,
+        "route": "escalation",
+        "source_text": "Otherwise, waiting >= 30 minutes -> escalation.",
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 30
+        }
+      },
+      {
+        "anchor": "policy.md#R4",
+        "id": "R4",
+        "precedence": 3,
+        "route": "normal",
+        "source_text": "All remaining tickets -> normal queue.",
+        "when": {
+          "all": [
+            {
+              "field": "category",
+              "op": "present"
+            },
+            {
+              "field": "urgent",
+              "op": "ne",
+              "value": true
+            },
+            {
+              "any": [
+                {
+                  "field": "waiting",
+                  "op": "missing"
+                },
+                {
+                  "field": "waiting",
+                  "op": "lt",
+                  "value": 30
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "version": "1.0"
+  },
+  "workflow": {
+    "name": "ticket-flow",
+    "nodes": [
+      {
+        "else": "urgent",
+        "id": "category",
+        "rule_ref": "R1",
+        "then": "manual",
+        "type": "decision",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "else": "wait",
+        "id": "urgent",
+        "rule_ref": "R2",
+        "then": "priority",
+        "type": "decision",
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        }
+      },
+      {
+        "else": "normal",
+        "id": "wait",
+        "rule_ref": "R3",
+        "then": "escalation",
+        "type": "decision",
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 30
+        }
+      },
+      {
+        "id": "manual",
+        "route": "manual_review",
+        "type": "route"
+      },
+      {
+        "id": "priority",
+        "route": "priority",
+        "type": "route"
+      },
+      {
+        "id": "escalation",
+        "route": "escalation",
+        "type": "route"
+      },
+      {
+        "id": "normal",
+        "route": "normal",
+        "type": "route"
+      }
+    ],
+    "start": "category",
+    "version": "1.0"
+  }
+}
