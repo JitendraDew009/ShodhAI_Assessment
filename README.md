@@ -2,6 +2,38 @@
 
 This is a CPU-only Python CLI for evidence-backed comparison of anchored policy requirements, a structured specification, a versioned decision graph, and a linked Python route function. The deterministic reviewer decides `PASS`, `CHANGES_REQUIRED`, or `INCOMPLETE`; an optional model-client interface is advisory only.
 
+## Recruiter report: answer and result
+
+**What it answers:** Does a workflow implementation match the approved policy requirements across its specification, decision graph, and linked Python route?
+
+**What it produces:** An evidence-backed JSON report containing `PASS`, `CHANGES_REQUIRED`, or `INCOMPLETE`, plus source-rule citations, findings, coverage, check results, and reproducible bundle hashes. It does not execute supplied Python.
+
+| Frozen evaluation result | Result |
+|---|---:|
+| Overall accuracy | **21/21 cases (100%)** |
+| Valid cases | **9/9 correctly classified as PASS** |
+| Defective cases | **9/9 correctly classified as CHANGES_REQUIRED** |
+| Incomplete/unsupported cases | **3/3 correctly classified as INCOMPLETE** |
+| Held-out cases | **4/4 (100%)** |
+| False blocks on valid cases | **0** |
+| False passes on defective cases | **0** |
+| Unsupported blocker findings | **0** |
+
+The 21-case frozen suite is the project’s reproducible result. Seventeen cases are development cases and four are held out. It is deterministic, CPU-only, and uses synthetic data; no live LLM or private data was used. The fake model client was used only to test bounded failure and response-handling paths.
+
+- **Machine-readable report:** [metrics.json](./reports/metrics.json)
+- **Detailed evaluation output:** [evaluation.json](./reports/evaluation.json)
+- **Technical findings and limitations:** [engineering_note.md](./engineering_note.md)
+- **CLI and implementation:** [cli.py](./src/workflow_reviewer/cli.py), [reviewer.py](./src/workflow_reviewer/reviewer.py)
+- **Tests:** [test_reviewer.py](./tests/test_reviewer.py)
+
+Run the complete reproducible check:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -v; if ($?) { python evaluation\run_evaluation.py }
+```
+
 ## Run it
 
 Requires Python 3.11–3.13. The application and tests use the standard library only; there are no model, GPU, network, or runtime-package requirements.
